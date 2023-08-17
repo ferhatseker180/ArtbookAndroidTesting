@@ -39,17 +39,12 @@ android {
         viewBinding true
     }
 
-    dexOptions {
-        javaMaxHeapSize "4g"
-        incremental true
-        preDexLibraries = false
-    }
 
 }
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.22"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.0"
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
@@ -82,9 +77,6 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:2.5.1"
     implementation 'com.github.bumptech.glide:glide:4.15.1'
     kapt 'com.github.bumptech.glide:compiler:4.13.2'
-
-    // Dex hatası Android 14 sürümünde yaşanıyor ve aşağıdaki implemetation ile yukarıdaki dex options eklenerek sorunu çözdüm.
-    implementation 'com.android.support:multidex:1.0.3'
 
 
     // TestImplementations
