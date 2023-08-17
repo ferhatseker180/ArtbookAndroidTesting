@@ -1,7 +1,8 @@
-package com.ferhatt.artbook
+package com.ferhatt.artbook.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.ferhatt.artbook.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

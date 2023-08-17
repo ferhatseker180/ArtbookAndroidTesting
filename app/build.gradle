@@ -18,6 +18,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
@@ -36,6 +37,12 @@ android {
 
     buildFeatures {
         viewBinding true
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+        incremental true
+        preDexLibraries = false
     }
 
 }
@@ -75,6 +82,9 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:2.5.1"
     implementation 'com.github.bumptech.glide:glide:4.15.1'
     kapt 'com.github.bumptech.glide:compiler:4.13.2'
+
+    // Dex hatası Android 14 sürümünde yaşanıyor ve aşağıdaki implemetation ile yukarıdaki dex options eklenerek sorunu çözdüm.
+    implementation 'com.android.support:multidex:1.0.3'
 
 
     // TestImplementations
