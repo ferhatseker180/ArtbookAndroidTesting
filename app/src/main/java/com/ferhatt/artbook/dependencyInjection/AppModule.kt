@@ -2,7 +2,13 @@ package com.ferhatt.artbook.dependencyInjection
 
 import android.content.Context
 import androidx.room.Room
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.ferhatt.artbook.R
 import com.ferhatt.artbook.api.RetrofitAPI
+import com.ferhatt.artbook.repo.ArtRepoInterface
+import com.ferhatt.artbook.repo.ArtRepository
+import com.ferhatt.artbook.roomdb.ArtDao
 import com.ferhatt.artbook.roomdb.ArtDatabase
 import com.ferhatt.artbook.util.Util.BASE_URL
 import dagger.Module
@@ -38,5 +44,17 @@ object AppModule {
             .build()
             .create(RetrofitAPI::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun injectNormalRepo(dao: ArtDao,api: RetrofitAPI) = ArtRepository(dao,api) as ArtRepoInterface
+
+    @Singleton
+    @Provides
+    fun injectGlide(@ApplicationContext context: Context) = Glide.with(context)
+        .setDefaultRequestOptions(
+            RequestOptions().placeholder(R.drawable.ic_launcher_foreground)
+                .error(R.drawable.ic_launcher_foreground)
+        )
 
 }
